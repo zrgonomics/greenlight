@@ -1,13 +1,9 @@
 package main // Declares an executable
 
 import (
-	"fmt" 				// Standard library fmt
-	"io"              	// Implements some I/O utility functions.
-	m "math"          	// Math library, aliased to m
-	"net/http"        	// Web server
-	_ "net/http/pprof" 	// Profiling library imported only for side fx
-	"os"               	// Basic I/O functions
-	"strconv"  			// String conversions
+	"fmt"              // Standard library fmt
+	m "math"           // Math library, aliased to m
+	_ "net/http/pprof" // Profiling library imported only for side fx
 )
 
 // main() is special in Go, it's the entrypoint to an executable
@@ -18,16 +14,19 @@ func main() {
 	StartServer()
 	greenlightUltra()
 	IntroTypes()
+	namedReturns(2, 3)
 
 	// Weirdly, Go has goto labels
 	goto jump
 
-	jump:
+jump:
+	controlFlow()
+
 }
 
 func greenlightUltra() {
 	//var s string   // initializes to "", Go doesn't do null for primitives
-	var i int // Initialize to 0... 32 or 64 bit depending on architecture
+	var i int      // Initialize to 0... 32 or 64 bit depending on architecture
 	var i32 int32  // Explicit 32-bit int.. int8, int16, int32, int64 work
 	var u32 uint32 // Explicit unsigned 32-bit int
 	var f float64  // 0.0...
@@ -53,7 +52,8 @@ func greenlightUltra() {
 }
 
 func intInitialized(nums ...int) (bool, error) {
-	if nums != nil {}
+	if nums != nil {
+	}
 	return true, fmt.Errorf("not an int")
 }
 
@@ -77,7 +77,12 @@ func controlFlow() {
 	case 0:
 	case 1, 2:
 	case 42:
+		// Cases don't fall through by default
+		// But they can with the keyword
 		fmt.Println("The answer to life, universe and everything")
+		fallthrough
+	case 43:
+		fmt.Println("Just after the answer, I run too!")
 	default: // Optional
 		fmt.Println("Something else")
 	}
@@ -98,11 +103,8 @@ func controlFlow() {
 		fmt.Println("i:", i)
 	}
 
-	var numbers map[string]int {"one": 1, "two": 2}
-
+	// This syntax is weird honestly
 	for k, v := range map[string]int{"one": 1, "two": 2} {
 		fmt.Println("Key:", k, "Value:", v)
 	}
-
-	for _, v := 
 }
