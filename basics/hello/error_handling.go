@@ -1,4 +1,4 @@
-package main // Declares an executable
+package main
 
 import (
 	"fmt"
