@@ -8,11 +8,13 @@ type Server struct {
 
 var internalCache = make(map[string]string)
 
-func StartServer() { // TitleCase name = public, exported
+// TitleCase name = public, exported
+func StartServer() {
 	fmt.Println("Starting server...")
 	helper()
 }
 
-func helper() { // lowercase name = private to the package, not exported
+// lowercase name = private to the package, not exported
+func helper() {
 	fmt.Println("Private helper function ran")
 }
